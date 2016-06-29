@@ -40,7 +40,6 @@ public class DAO {
             if (bDebug) {
                 System.err.println("Error al Conectar: " + e.getMessage());
             }
-            logger.error(e.getMessage());
             throw e;
         }
     }
