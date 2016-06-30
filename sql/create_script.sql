@@ -62,17 +62,13 @@ CREATE TABLE `asistencia`  (
 )
 ;
 
-CREATE TABLE `incidencias`  ( 
-	`id_asistencia`       	int(11) NOT NULL,
-	`id_incidencia`  	int(11) AUTO_INCREMENT NOT NULL,
-	`fecha` 	date NOT NULL,
-	`tipoincidencia`       	int(11) NOT NULL,
-    
-	`tipopago`       	int(11) NOT NULL,
-	`numeropago`       	int(11) NOT NULL,
-	`f_inicio` 	date NOT NULL,
-	`f_fin` 	date NOT NULL,
-	`f_pago` 	date NOT NULL,
+
+CREATE TABLE incidencias  ( 
+	id_asistencia 	int(11) NOT NULL,
+	id_incidencia 	int(11) AUTO_INCREMENT NOT NULL,
+	fecha         	date NOT NULL,
+	tipoincidencia	int(11) NOT NULL,
+	observaciones       	varchar(255) NOT NULL,
 	PRIMARY KEY(`id_incidencia`),
     foreign key (id_asistencia) references asistencia(id_asistencia)
 )
