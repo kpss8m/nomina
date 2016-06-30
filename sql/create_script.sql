@@ -19,6 +19,7 @@ CREATE TABLE `empleado`  (
 	`foto`         	varchar(150) NULL,
 	`clasificacion`	varchar(150) NULL,
 	`salariodiario`	decimal(12,2) NOT NULL,
+    `tipopago` int(11) NOT NULL,
 	PRIMARY KEY(`id_empleado`)
 )
 ;
