@@ -36,7 +36,7 @@ public class IncidenciasDAO extends DAO {
         String qryInsert = "insert into incidencias (fecha, tipoincidencia, id_asistencia, observaciones) values (?,?,?,?)";
 
         PreparedStatement ps = super.getCn().prepareStatement(qryInsert);
-        ps.setDate(1, (java.sql.Date) incidencias.getFecha());
+        ps.setDate(1, new java.sql.Date(incidencias.getFecha().getTime()));
         ps.setInt(2, incidencias.getTipoIncidencia());
         ps.setInt(3, incidencias.getIdAsistencia());
         ps.setString(4, incidencias.getObservaciones());
@@ -68,7 +68,7 @@ public class IncidenciasDAO extends DAO {
         String qryUpdate = "update incidencias set fecha = ?, tipoincidencia = ?, id_asistencia = ?, observaciones = ? where id_incidencia = ?";
 
         PreparedStatement ps = super.getCn().prepareStatement(qryUpdate);
-        ps.setDate(1, (java.sql.Date) incidencias.getFecha());
+        ps.setDate(1, new java.sql.Date(incidencias.getFecha().getTime()));
         ps.setInt(2, incidencias.getTipoIncidencia());
         ps.setInt(3, incidencias.getIdAsistencia());
         ps.setString(4, incidencias.getObservaciones());
@@ -90,8 +90,8 @@ public class IncidenciasDAO extends DAO {
         String qrySearch = "select * from incidencias where fecha between ? and ?";
         
         PreparedStatement ps = super.getCn().prepareStatement(qrySearch);
-        ps.setDate(1, (java.sql.Date) fechaInicial);
-        ps.setDate(2, (java.sql.Date) fechaFinal);
+        ps.setDate(1, new java.sql.Date(fechaInicial.getTime()));
+        ps.setDate(2, new java.sql.Date(fechaFinal.getTime()));
         
         ResultSet rs = ps.executeQuery();
         
