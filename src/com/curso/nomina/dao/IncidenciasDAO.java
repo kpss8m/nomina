@@ -33,7 +33,7 @@ public class IncidenciasDAO extends DAO {
      * @throws SQLException Excepción generada durante el proceso de inserción de la incidencia.
      */
     public void alta(Incidencias incidencias) throws SQLException {
-        String qryInsert = "insert into incidencias (fecha, tipo_incidencia, id_asistencia, observaciones) values (?,?,?,?)";
+        String qryInsert = "insert into incidencias (fecha, tipoincidencia, id_asistencia, observaciones) values (?,?,?,?)";
 
         PreparedStatement ps = super.getCn().prepareStatement(qryInsert);
         ps.setDate(1, (java.sql.Date) incidencias.getFecha());
@@ -51,7 +51,7 @@ public class IncidenciasDAO extends DAO {
      * @throws SQLException Excepción generada durante el proceso de baja de la incidencia.
      */
     public void baja(int idIncidencia) throws SQLException {
-        String qryDelete = "delete from incidencias where id = ?";
+        String qryDelete = "delete from incidencias where id_incidencia = ?";
 
         PreparedStatement ps = super.getCn().prepareStatement(qryDelete);
         ps.setInt(1, idIncidencia);
@@ -65,7 +65,7 @@ public class IncidenciasDAO extends DAO {
      * @throws SQLException Excepción generada durante el proceso de actualización.
      */
     public void actualizar(Incidencias incidencias) throws SQLException {
-        String qryUpdate = "update incidencias set fecha = ?, tipo_incidencia = ?, id_asistencia = ?, observaciones = ? where id = ?";
+        String qryUpdate = "update incidencias set fecha = ?, tipoincidencia = ?, id_asistencia = ?, observaciones = ? where id_incidencia = ?";
 
         PreparedStatement ps = super.getCn().prepareStatement(qryUpdate);
         ps.setDate(1, (java.sql.Date) incidencias.getFecha());
@@ -96,9 +96,9 @@ public class IncidenciasDAO extends DAO {
         ResultSet rs = ps.executeQuery();
         
         while (rs.next()) {
-            resultado.add(new Incidencias(rs.getInt("id"),
+            resultado.add(new Incidencias(rs.getInt("id_incidencia"),
                     rs.getDate("feha"),
-                    rs.getInt("tipo_incidencia"),
+                    rs.getInt("tipoincidencia"),
                     rs.getInt("id_asistencia"),
                     rs.getString("observaciones")));
         }
